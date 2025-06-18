@@ -1,10 +1,17 @@
 import './App.css'
 import './components/Auth/Auth.css'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { useAuth } from './contexts/AuthContext'
 import { AuthModal } from './components/Auth'
+import { Layout } from './components/Layout'
+import Home from './pages/Home'
+import MapEditor from './pages/MapEditor'
+import MapViewer from './pages/MapViewer'
+import Search from './pages/Search'
+import AuthPage from './pages/Auth'
 
 function App() {
-  const { isAuthenticated, isLoading, signOut } = useAuth()
+  const { isAuthenticated, isLoading } = useAuth()
 
   if (isLoading) {
     return (
@@ -14,23 +21,28 @@ function App() {
     )
   }
 
-  if (!isAuthenticated) {
-    return <AuthModal />
-  }
-
   return (
-    <div className="app-container">
-      <header className="app-header">
-        <h1>Indoor Navigator</h1>
-        <button onClick={signOut} className="logout-button">
-          ログアウト
-        </button>
-      </header>
-      <main className="app-main">
-        <h2>屋内ナビゲーションアプリへようこそ</h2>
-        <p>認証が完了しました。ここから屋内ナビゲーション機能を開始できます。</p>
-      </main>
-    </div>
+    <Router>
+      <div className="app-container">
+        {!isAuthenticated ? (
+          <Routes>
+            <Route path="/auth" element={<AuthModal />} />
+            <Route path="*" element={<Navigate to="/auth" replace />} />
+          </Routes>
+        ) : (
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/map-editor" element={<MapEditor />} />
+              <Route path="/map-viewer" element={<MapViewer />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/auth" element={<AuthPage />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </Layout>
+        )}
+      </div>
+    </Router>
   )
 }
 
