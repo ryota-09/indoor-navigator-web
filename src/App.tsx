@@ -1,3 +1,4 @@
+import React from 'react'
 import './App.css'
 import './components/Auth/Auth.css'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
@@ -11,7 +12,15 @@ import Search from './pages/Search'
 import AuthPage from './pages/Auth'
 
 function App() {
-  const { isAuthenticated, isLoading } = useAuth()
+  const { isAuthenticated, isLoading, enableDevMode } = useAuth()
+
+  // URLパラメータで開発モードを自動有効化
+  React.useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('dev') === 'true') {
+      enableDevMode();
+    }
+  }, [enableDevMode]);
 
   if (isLoading) {
     return (
@@ -21,9 +30,27 @@ function App() {
     )
   }
 
+  // 開発環境でのデバッグ用ショートカット
+  const isDev = import.meta.env.DEV;
+
   return (
     <Router>
       <div className="app-container">
+        {/* 開発モード用のバイパス */}
+        {isDev && (
+          <div style={{ position: 'fixed', top: '10px', right: '10px', zIndex: 1000, background: '#ff9800', padding: '5px 10px', borderRadius: '4px' }}>
+            <button 
+              onClick={() => {
+                enableDevMode();
+                window.location.reload();
+              }}
+              style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer', fontSize: '12px' }}
+            >
+              🚀 Dev Mode
+            </button>
+          </div>
+        )}
+        
         {!isAuthenticated ? (
           <Routes>
             <Route path="/auth" element={<AuthModal />} />

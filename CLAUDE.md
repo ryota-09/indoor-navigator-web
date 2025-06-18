@@ -59,3 +59,6 @@ This appears to be an indoor navigation web application. When working on feature
 - Plan for map/floor plan rendering
 - Think about user positioning and pathfinding algorithms
 - Consider mobile-responsive design for on-device usage
+
+## Memories
+- 4に着手して

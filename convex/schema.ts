@@ -1,15 +1,10 @@
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
+import { authTables } from "@convex-dev/auth/server";
 
 export default defineSchema({
-  users: defineTable({
-    email: v.string(),
-    password_hash: v.string(),
-    name: v.string(),
-    created_at: v.number(),
-    updated_at: v.number(),
-  })
-    .index("by_email", ["email"]),
+  // Convex Authが管理するテーブル
+  ...authTables,
 
   facilities: defineTable({
     name: v.string(),

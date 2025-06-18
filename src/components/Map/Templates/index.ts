@@ -1,0 +1,1 @@
+export { default as MapTemplates } from './MapTemplates';
