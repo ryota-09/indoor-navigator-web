@@ -1,0 +1,71 @@
+.tool-palette {
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.tool-palette h3 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.tool-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tool-button {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.tool-button:hover {
+  border-color: #2196f3;
+  background: #f0f8ff;
+}
+
+.tool-button.selected {
+  border-color: #2196f3;
+  background: #e3f2fd;
+}
+
+.tool-icon {
+  font-size: 18px;
+  margin-right: 8px;
+  width: 24px;
+  text-align: center;
+}
+
+.tool-name {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .tool-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .tool-button {
+    flex: 1;
+    min-width: calc(50% - 4px);
+    padding: 8px;
+  }
+  
+  .tool-name {
+    font-size: 12px;
+  }
+}

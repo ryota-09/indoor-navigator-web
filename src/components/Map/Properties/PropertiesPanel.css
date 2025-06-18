@@ -1,0 +1,79 @@
+.properties-panel {
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  height: fit-content;
+}
+
+.properties-panel h3 {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.no-selection {
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
+  margin: 0;
+}
+
+.property-group {
+  margin-bottom: 16px;
+}
+
+.property-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 4px;
+}
+
+.property-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.property-group input:focus {
+  outline: none;
+  border-color: #2196f3;
+}
+
+.property-group input[type="color"] {
+  height: 40px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.property-group input[type="range"] {
+  padding: 0;
+}
+
+.element-info {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.element-info p {
+  font-size: 12px;
+  color: #666;
+  margin: 4px 0;
+}
+
+@media (max-width: 768px) {
+  .properties-panel {
+    padding: 12px;
+  }
+  
+  .property-group input {
+    padding: 6px;
+    font-size: 12px;
+  }
+}

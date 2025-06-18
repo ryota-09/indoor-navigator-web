@@ -61,3 +61,49 @@ export interface SearchResult {
   map: Map;
   relevanceScore: number;
 }
+
+// Map Editor Types
+export interface MapElement {
+  id: string;
+  type: ElementType;
+  position: Coordinates;
+  rotation: number;
+  properties: ElementProperties;
+  selected?: boolean;
+}
+
+export type ElementType = 
+  | 'room'
+  | 'corridor'
+  | 'stairs'
+  | 'elevator'
+  | 'door'
+  | 'wall';
+
+export interface ElementProperties {
+  name?: string;
+  width?: number;
+  height?: number;
+  color?: string;
+}
+
+export interface MapCanvas {
+  elements: MapElement[];
+  gridSize: number;
+  zoom: number;
+  offset: Coordinates;
+}
+
+export interface MapTemplate {
+  id: string;
+  name: string;
+  type: ElementType;
+  icon: string;
+  defaultProperties: ElementProperties;
+}
+
+export type Tool = 
+  | 'select'
+  | 'pan'
+  | 'template'
+  | 'delete';
