@@ -1,0 +1,3 @@
+[submodule "indoor-navigator-app"]
+	path = indoor-navigator-app
+	url = https://github.com/ryota-09/indoor-navigator-app
